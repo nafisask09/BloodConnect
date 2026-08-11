@@ -30,7 +30,6 @@ public class DonorService {
     }
 
     public Donor updateDonor(String id, Donor donor) {
-
         Donor existingDonor = donorRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Donor not found"));
 
@@ -49,25 +48,33 @@ public class DonorService {
         donorRepository.deleteById(id);
     }
 
+    // FIXED - SIMPLE SEARCH METHODS
     public List<Donor> searchByBloodGroup(String bloodGroup) {
-
-        return donorRepository
-                .findByBloodGroupIgnoreCaseAndAvailabilityTrue(bloodGroup);
+        System.out.println("Service: Searching for blood group: " + bloodGroup);
+        List<Donor> results = donorRepository.findByBloodGroupIgnoreCaseAndAvailabilityTrue(bloodGroup);
+        System.out.println("Service: Found " + results.size() + " donors");
+        return results;
     }
 
-    public List<Donor> searchByBloodGroupAndLocation(
-            String bloodGroup,
-            String location) {
-
-        return donorRepository
-                .findByBloodGroupIgnoreCaseAndLocationIgnoreCaseAndAvailabilityTrue(
-                        bloodGroup,
-                        location
-                );
+    public List<Donor> searchByBloodGroupAndLocation(String bloodGroup, String location) {
+        System.out.println("Service: Searching for blood group: " + bloodGroup + " in location: " + location);
+        
+        // Get ALL donors first (for debugging)
+        List<Donor> allDonors = donorRepository.findAll();
+        System.out.println("Total donors in DB: " + allDonors.size());
+        
+        // Manually filter (temporary fix)
+        List<Donor> results = allDonors.stream()
+                .filter(d -> d.getBloodGroup().equalsIgnoreCase(bloodGroup))
+                .filter(d -> d.getLocation().equalsIgnoreCase(location))
+                .filter(Donor::isAvailability)
+                .collect(Collectors.toList());
+        
+        System.out.println("Filtered results: " + results.size());
+        return results;
     }
 
     public List<String> getLocationSuggestions(String location) {
-
         return donorRepository
                 .findByLocationContainingIgnoreCase(location)
                 .stream()

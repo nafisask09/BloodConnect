@@ -7,13 +7,9 @@ import java.util.List;
 
 public interface DonorRepository extends MongoRepository<Donor, String> {
 
-    List<Donor> findByBloodGroupIgnoreCaseAndAvailabilityTrue(
-            String bloodGroup);
+    // Search by blood group only
+    List<Donor> findByBloodGroupIgnoreCaseAndAvailabilityTrue(String bloodGroup);
 
-    List<Donor> findByBloodGroupIgnoreCaseAndLocationIgnoreCaseAndAvailabilityTrue(
-            String bloodGroup,
-            String location);
-
-    List<Donor> findByLocationContainingIgnoreCase(
-            String location);
+    // Location suggestions
+    List<Donor> findByLocationContainingIgnoreCase(String location);
 }
