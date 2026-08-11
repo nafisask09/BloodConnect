@@ -1,3 +1,4 @@
+# Build stage
 FROM maven:3.9.9-eclipse-temurin-17 AS build
 
 WORKDIR /app
@@ -10,8 +11,8 @@ RUN mvn dependency:go-offline -B
 COPY backend/src ./src
 RUN mvn clean install -DskipTests
 
-# Runtime stage
-FROM openjdk:17-jdk-slim
+# Runtime stage using Eclipse Temurin (replaces deprecated openjdk image)
+FROM eclipse-temurin:17-jdk-alpine
 
 WORKDIR /app
 
