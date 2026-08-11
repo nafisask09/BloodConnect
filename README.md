@@ -97,7 +97,7 @@ bloodconnect/
 
 ### Step 1: Clone the Repository
 ```bash
-git clone https://github.com/yourusername/bloodconnect.git
+git clone https://github.com/nafisask09/BloodConnect.git
 cd bloodconnect
 ```
 
@@ -118,11 +118,14 @@ npm run dev
 ```
 
 ### Step 4: Access Application
-```
-Frontend: http://localhost:5173
-Backend API: http://localhost:8081
-```
 
+**Frontend (Website):**
+```
+http://localhost:5173
+
+**Backend API (REST Endpoints):**
+http://localhost:8081/api/donors
+```
 ---
 
 ## 📡 API Endpoints
@@ -156,8 +159,12 @@ POST http://localhost:8081/api/donors
 ```
 
 ### Test Search
+
+**Example API call:**
+
 ```
-GET http://localhost:8081/api/donors/search?bloodGroup=A+&location=Tenali
+GET http://localhost:8081/api/donors/search?bloodGroup=A%2B&location=Tenali
+
 ```
 
 ---
@@ -197,10 +204,8 @@ This project is licensed under the MIT License.
 
 ## 👨‍💻 Author
 
-**Your Name**
-- GitHub: [@yourusername](https://github.com/yourusername)
-- LinkedIn: [Your Name](https://linkedin.com/in/yourusername)
-- Portfolio: [yourportfolio.com](https://yourportfolio.com)
+**Nafisa**
+- GitHub: [@nafisask09](https://github.com/nafisask09)
 
 ---
 
@@ -213,9 +218,9 @@ This project is licensed under the MIT License.
 
 ## 📊 Project Status
 
-![Status](https://img.shields.io/badge/Status-Complete-green)
-![Version](https://img.shields.io/badge/Version-1.0-blue)
-![License](https://img.shields.io/badge/License-MIT-yellow)
+**Status:** Complete ✅
+**Version:** 1.0
+**License:** MIT
 
 ---
 
