@@ -118,9 +118,8 @@ npm run dev
 ```
 
 ### Step 4: Access Application
-
-**Frontend (Website):**
 ```
+**Frontend (Website):**
 http://localhost:5173
 
 **Backend API (REST Endpoints):**
