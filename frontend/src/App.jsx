@@ -2,6 +2,8 @@ import { useState, useRef } from "react";
 import "./App.css";
 import Register from "./Register";
 
+const API_URL = "https://bloodconnect-backend-thin.onrender.com";
+
 function App() {
   const [bloodGroup, setBloodGroup] = useState("");
   const [location, setLocation] = useState("");
@@ -35,7 +37,7 @@ function App() {
 
     try {
       let url =
-        "http://localhost:8080/api/donors/search?bloodGroup=" +
+        `${API_URL}/api/donors/search?bloodGroup=` +
         encodeURIComponent(bloodGroup);
 
       if (location.trim()) {
@@ -79,7 +81,7 @@ function App() {
 
     try {
       const response = await fetch(
-        "http://localhost:8080/api/donors/locations?query=" +
+        `${API_URL}/api/donors/locations?query=` +
           encodeURIComponent(value)
       );
 
@@ -95,14 +97,13 @@ function App() {
     }
   };
 
-  // Select location suggestion - FIXED
+  // Select location suggestion
   const handleLocationSelect = (selectedLocation) => {
     setLocation(selectedLocation);
     setLocationSuggestions([]);
     setShowSuggestions(false);
     setHasSearched(false);
-    
-    // Force the input to show the value
+
     if (inputRef.current) {
       inputRef.current.value = selectedLocation;
       inputRef.current.focus();
@@ -205,7 +206,7 @@ function App() {
               </select>
             </div>
 
-            {/* LOCATION - FIXED */}
+            {/* LOCATION */}
             <div className="form-group location-group">
               <label>Location</label>
 
@@ -234,7 +235,7 @@ function App() {
                         className="location-suggestion"
                         key={index}
                         onMouseDown={(e) => {
-                          e.preventDefault(); // Prevents blur
+                          e.preventDefault();
                           handleLocationSelect(suggestion);
                         }}
                       >

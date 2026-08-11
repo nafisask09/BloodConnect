@@ -1,6 +1,8 @@
 import { useState } from "react";
 import "./App.css";
 
+const API_URL = "https://bloodconnect-backend-thin.onrender.com";
+
 function Register() {
   const [formData, setFormData] = useState({
     name: "",
@@ -84,16 +86,13 @@ function Register() {
         availability: formData.availability === "true",
       };
 
-      const response = await fetch(
-        "http://localhost:8080/api/donors",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(donor),
-        }
-      );
+      const response = await fetch(`${API_URL}/api/donors`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(donor),
+      });
 
       if (!response.ok) {
         throw new Error("Registration failed");
@@ -151,10 +150,7 @@ function Register() {
           </p>
         </div>
 
-        <form
-          className="registration-form"
-          onSubmit={handleSubmit}
-        >
+        <form className="registration-form" onSubmit={handleSubmit}>
           <div className="registration-row">
             <div className="form-group">
               <label>Full Name *</label>
@@ -256,10 +252,7 @@ function Register() {
             </div>
           </div>
 
-          <button
-            type="submit"
-            className="registration-button"
-          >
+          <button type="submit" className="registration-button">
             Register as Donor
           </button>
 
