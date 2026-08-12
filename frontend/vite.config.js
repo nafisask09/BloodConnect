@@ -3,6 +3,9 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
+  build: {
+    outDir: 'dist' // This tells Vite to output files to the 'dist' folder
+  },
   server: {
     port: 5173,
     strictPort: false,  // Will try other ports if 5173 is busy
