@@ -1,10 +1,8 @@
 # 🩸 BloodConnect - Blood Donor Management System
 
-![BloodConnect Banner](https://img.shields.io/badge/BloodConnect-v1.0-red)
-
 ## 🌟 Live Demo
-> **Frontend:** https://bloodconnect.vercel.app (Coming Soon)
-> **Backend:** https://bloodconnect-backend.onrender.com (Coming Soon)
+> **Frontend:** https://bloodconnect-frontend-ywkj.onrender.com
+> **Backend:** https://bloodconnect-backend-thin.onrender.com
 
 ## 📌 Overview
 BloodConnect is a full-stack web application that connects blood donors with people in need. Users can search for available donors by blood group and location, and register as donors to help save lives.
@@ -55,7 +53,6 @@ BloodConnect is a full-stack web application that connects blood donors with peo
 ### Tools
 - **Eclipse IDE** - Backend Development
 - **VS Code** - Frontend Development
-- **Postman** - API Testing
 - **Git** - Version Control
 
 ---
@@ -141,33 +138,6 @@ http://localhost:8081/api/donors
 
 ---
 
-## 🧪 Testing
-
-### Test Registration
-```json
-POST http://localhost:8081/api/donors
-{
-  "name": "John Doe",
-  "age": 25,
-  "bloodGroup": "O+",
-  "phone": "9876543210",
-  "location": "Tenali",
-  "availability": true,
-  "lastDonationDate": "2026-01-15"
-}
-```
-
-### Test Search
-
-**Example API call:**
-
-```
-GET http://localhost:8081/api/donors/search?bloodGroup=A%2B&location=Tenali
-
-```
-
----
-
 ## 🚀 Deployment
 
 ### Backend Deployment (Render.com)
@@ -178,8 +148,8 @@ GET http://localhost:8081/api/donors/search?bloodGroup=A%2B&location=Tenali
 5. Start Command: `java -jar target/*.jar`
 
 ### Frontend Deployment (Vercel)
-1. Install Vercel CLI: `npm install -g vercel`
-2. Deploy: `vercel`
+1. Push code to GitHub
+2. Create Static Site on Render.com and connect GitHub repo
 3. Follow prompts
 
 ---
