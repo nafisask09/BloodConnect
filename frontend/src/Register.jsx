@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./App.css";
 
-const API_URL = "https://bloodconnect-backend-thin.onrender.com";
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8081";
 
 function Register() {
   const [formData, setFormData] = useState({

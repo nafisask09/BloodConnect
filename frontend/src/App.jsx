@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Link, useNavigate } from "react
 import "./App.css";
 import Register from "./Register";
 
-const API_URL = "https://bloodconnect-backend-thin.onrender.com";
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8081";
 
 function HomePage() {
   const [bloodGroup, setBloodGroup] = useState("");
