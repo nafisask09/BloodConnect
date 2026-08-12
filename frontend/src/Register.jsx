@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import "./App.css";
 
 const API_URL = "https://bloodconnect-backend-thin.onrender.com";
@@ -15,6 +16,7 @@ function Register() {
   });
 
   const [message, setMessage] = useState("");
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -101,7 +103,7 @@ function Register() {
       await response.json();
 
       setMessage(
-        "Donor registered successfully! Thank you for helping save lives."
+        "✅ Donor registered successfully! Redirecting to home..."
       );
 
       setFormData({
@@ -113,6 +115,11 @@ function Register() {
         availability: "true",
         lastDonationDate: "",
       });
+
+      // Redirect to home after 2 seconds
+      setTimeout(() => {
+        navigate("/");
+      }, 2000);
     } catch (error) {
       console.error(error);
 
@@ -131,9 +138,9 @@ function Register() {
         </div>
 
         <nav>
-          <a href="/">Home</a>
+          <Link to="/">Home</Link>
           <a href="/#find">Find a Donor</a>
-          <a href="/register">Register</a>
+          <Link to="/register">Register</Link>
           <a href="/#about">About</a>
         </nav>
       </header>

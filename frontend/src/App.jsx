@@ -1,10 +1,11 @@
 import { useState, useRef } from "react";
+import { BrowserRouter as Router, Routes, Route, Link, useNavigate } from "react-router-dom";
 import "./App.css";
 import Register from "./Register";
 
 const API_URL = "https://bloodconnect-backend-thin.onrender.com";
 
-function App() {
+function HomePage() {
   const [bloodGroup, setBloodGroup] = useState("");
   const [location, setLocation] = useState("");
   const [locationSuggestions, setLocationSuggestions] = useState([]);
@@ -13,11 +14,7 @@ function App() {
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const inputRef = useRef(null);
-
-  // Registration page
-  if (window.location.pathname === "/register") {
-    return <Register />;
-  }
+  const navigate = useNavigate();
 
   // Search donors
   const handleSearch = async (e) => {
@@ -127,9 +124,9 @@ function App() {
         </div>
 
         <nav>
-          <a href="/">Home</a>
+          <Link to="/">Home</Link>
           <a href="#find">Find a Donor</a>
-          <a href="/register">Register</a>
+          <Link to="/register">Register</Link>
           <a href="#about">About</a>
         </nav>
       </header>
@@ -345,9 +342,9 @@ function App() {
             </p>
           </div>
 
-          <a href="/register" className="register-link-button">
+          <Link to="/register" className="register-link-button">
             Register as Donor
-          </a>
+          </Link>
         </section>
       </main>
 
@@ -361,6 +358,17 @@ function App() {
         <p>Connecting donors with people in need.</p>
       </footer>
     </div>
+  );
+}
+
+function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/register" element={<Register />} />
+      </Routes>
+    </Router>
   );
 }
 
