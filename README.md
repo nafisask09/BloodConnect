@@ -147,7 +147,7 @@ http://localhost:8081/api/donors
 4. Build Command: `./mvnw clean install`
 5. Start Command: `java -jar target/*.jar`
 
-### Frontend Deployment (Vercel)
+### Frontend Deployment (Render.com)
 1. Push code to GitHub
 2. Create Static Site on Render.com and connect GitHub repo
 3. Follow prompts
@@ -189,7 +189,6 @@ This project is licensed under the MIT License.
 
 **Status:** Complete ✅
 **Version:** 1.0
-**License:** MIT
 
 ---
 
